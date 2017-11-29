@@ -31,6 +31,12 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery:"jquery",
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default']
+    }),
     // UglifyJs do not support ES6+, you can also use babel-minify for better treeshaking: https://github.com/babel/minify
     new webpack.optimize.UglifyJsPlugin({
       compress: {
