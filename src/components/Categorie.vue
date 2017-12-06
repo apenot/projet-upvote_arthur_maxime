@@ -1,16 +1,22 @@
 <template>
     <div>
-        <h2>#{{index}} {{value.Libelle}}</h2>
+    <h2>{{value.nom}} <router-link :to="{ name: 'CategorieDetail', params: {slug: value.slug}}">detail</router-link></h2> 
+    video 
+    video 
+    video 
+        
     </div>
 </template>
 
 <script>
+
 export default {
     props: ['value', 'index'],
     methods: {
     }
 };
 </script>
+
 
 <style>
 
