@@ -1,7 +1,7 @@
 <template>
   <div class="pageHome">
-      <h2>Home.vue</h2>
-        <my-personne  v-bind:value="v" v-bind:index="i" v-bind:key="i" v-for="(v, i) in listeCategorie"></my-personne>
+      <h2>Page  Home.vue</h2>
+        <my-categorie  v-bind:value="v" v-bind:index="i" v-bind:key="i" v-for="(v, i) in categories"></my-categorie>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import Categorie from './Categorie';
 export default {
     data() {
         return {
-            personnes: this.$root.personnes
+            categories: this.$root.categories
         };
     },
     computed: {
