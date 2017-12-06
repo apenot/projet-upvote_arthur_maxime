@@ -8,8 +8,8 @@ module.exports = {
   dev: {
 
     // Paths
-    assetsSubDirectory: 'projet-upvote_arthur_maxime/static',
-    assetsPublicPath: '/',
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/projet-upvote_arthur_maxime/',
     proxyTable: {},
 
     // Various Dev Server settings
