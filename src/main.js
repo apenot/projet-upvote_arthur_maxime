@@ -4,6 +4,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import firebase from 'firebase';
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
@@ -14,11 +15,15 @@ new Vue({
     components: { App },
     data() {
         return {
-            categories: [
-                { nom: 'Musique', slug: 'musique' },
-                { nom: 'Bande annonce', slug: 'bande-annonce' },
-                { nom: 'Hi-Tech', slug: 'hi-tech' }
-            ]
         };
+    },
+    firebase() {
+        return {
+            categories: {
+                source: firebase.database().ref('/categories')
+            }
+        };
+    },
+    methods: {
     }
 });
