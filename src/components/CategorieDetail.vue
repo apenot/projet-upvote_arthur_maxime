@@ -1,6 +1,7 @@
 <template>
   <div>
       <h2>Detail de la categorie {{categorie.nom}}</h2>
+      liste des videos
   </div>
 </template>
 

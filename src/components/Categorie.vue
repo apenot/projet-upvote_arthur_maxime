@@ -1,6 +1,6 @@
 <template>
     <div>
-    <h2>{{value.nom}} <router-link :to="{ name: 'CategorieDetail', params: {slug: value.slug}}">detail</router-link></h2> 
+    <h2>{{value.nom}} <router-link :to="{ name: 'CategorieDetail', params: {slug: value.slug}}">+</router-link></h2> 
     video 
     video 
     video 

@@ -3,6 +3,7 @@ import Vue from 'vue';
 import firebase from 'firebase';
 import VueFire from 'vuefire';
 Vue.use(VueFire);
+
 // Initialize Firebase
 var config = {
     apiKey: 'AIzaSyBGlbmoiFO7_LR4BrRRmdEDijewDwdK4Aw',
@@ -12,4 +13,4 @@ var config = {
     storageBucket: 'upvote-cf339.appspot.com',
     messagingSenderId: '481064603440'
 };
-firebase.initializeApp(config);
+export default firebase.initializeApp(config);
