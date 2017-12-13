@@ -28,6 +28,11 @@ export default new Router({
             path: '/video/:id',
             name: 'VideoDetail',
             component: VideoDetail
+        },
+        {
+            path: '/ajoutVid/',
+            name: 'VideoAjout',
+            component: VideoAjout
         }
     ]
 });
