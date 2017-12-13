@@ -4,7 +4,7 @@ import Home from '@/components/Home';
 import CategorieDetail from '@/components/CategorieDetail';
 import CategorieAjout from '@/components/CategorieAjout';
 import VideoDetail from '@/components/VideoDetail';
-
+import VideoAjout from '@/components/VideoAjout';
 Vue.use(Router);
 
 export default new Router({
