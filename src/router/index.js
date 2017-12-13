@@ -4,6 +4,7 @@ import Home from '@/components/Home';
 import CategorieDetail from '@/components/CategorieDetail';
 import CategorieAjout from '@/components/CategorieAjout';
 import VideoDetail from '@/components/Video';
+import VideoAjout from '@/components/VideoAjout';
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
             path: '/video/:id',
             name: 'VideoDetail',
             component: VideoDetail
+        },
+        {
+            path: '/ajoutVid/',
+            name: 'VideoAjout',
+            component: VideoAjout
         }
     ]
 });
