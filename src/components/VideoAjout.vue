@@ -4,7 +4,7 @@
             <h2>Ajouter une video</h2>
             <form>
                 <div class="form-group">
-                    <label for="urlVid">URL</label>
+                    <label for="urlVid">URL de votre video</label>
                     <input id="urlVId" class="form-control" v-model="videoURL" required>
                 </div>
                 <div class="form-group">
@@ -14,9 +14,8 @@
                             {{ categories[i].nom }}
                             </option>
                         </select>
-                        <span>Selected: {{ selected }}</span>
                 </div>
-                <button v-on:click="ajouterVideo()" class="btn btn-primary">Enregistrer</button>
+                <button v-on:click="ajoutVideo()" class="btn btn-primary">Enregistrer</button>
             </form>
         </div>
     </div>
@@ -41,9 +40,11 @@ export default {
         };
     },
     methods: {
+        urlShortener(link) {
+            return link.substr(32);
+        },
         ajoutVideo() {
-            this.$firebaseRefs.videos.push({nom: this.videoNom, url: this.videoURL});
-            this.videoNom = '';
+            this.$firebaseRefs.videos.push({url: this.urlShortener(this.videoURL)});
             this.videoURL = '';
         }
     }
