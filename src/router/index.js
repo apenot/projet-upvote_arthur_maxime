@@ -3,7 +3,7 @@ import Router from 'vue-router';
 import Home from '@/components/Home';
 import CategorieDetail from '@/components/CategorieDetail';
 import CategorieAjout from '@/components/CategorieAjout';
-import VideoDetail from '@/components/Video';
+import VideoDetail from '@/components/VideoDetail';
 
 Vue.use(Router);
 
