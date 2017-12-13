@@ -1,14 +1,12 @@
 <template>
-<div>
-    <h1>{{videoTitle}}</h1>
-    <p>
-        {{videoDescription}}
-    </p>
-    <img v-bind:src="videoThumbnails">
-    
-    
-    
-</div>
+    <div class="card" style="width: 20rem;">
+        <img class="card-img-top" v-bind:src="videoThumbnails" alt="minuiature">
+        <div class="card-body">
+            <h4 class="card-title">{{videoTitle}}</h4>
+            <p class="card-text">{{videoNbVue}} vues</p>
+            <a href="#" class="btn btn-primary">Lecture</a>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -27,15 +25,13 @@ export default {
             };
         },
         methods: {
-
             loadData: function () {
-                console.log('loadData');
-                axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails+&id=' + this.videoID + '&key=AIzaSyBGlbmoiFO7_LR4BrRRmdEDijewDwdK4Aw').then(response => {
-                    this.apiReply = response.data;
+                axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2C+statistics+&id=' + this.videoID + '&key=AIzaSyBGlbmoiFO7_LR4BrRRmdEDijewDwdK4Aw').then(response => {
                     this.videoTitle = response.data.items[0].snippet.title;
                     this.videoDescription = response.data.items[0].snippet.description;
                     this.videoChannelTitle = response.data.items[0].snippet.channelTitle;
                     this.videoThumbnails = response.data.items[0].snippet.thumbnails.medium.url;
+                    this.videoNbVue = response.data.items[0].statistics.viewCount;
                     this.dataLoaded = true;
                 }).catch(function (error) {
                     console.log(error);
