@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h2>Detail de la categorie {{categorie.nom}}</h2>
+      <h2>Detail de la categorie {{categorie.nom}} key: {{categorie['.key']}}</h2>
       liste des videos
   </div>
 </template>
