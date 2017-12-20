@@ -4,8 +4,19 @@
             <img class="card-img-top" v-bind:src="videoThumbnails" alt="minuiature">
             <div class="card-body">
                 <h4 class="card-title">{{videoTitle}}</h4>
-                <p class="card-text">{{videoNbVue}} vues</p>
-                <p class="card-text">{{videoChannelTitle}}</p>
+                <p class="card-text">{{videoChannelTitle}} - {{ new Intl.NumberFormat().format(videoNbVue) }} vues</p>
+                <p>Nb vote: </p>
+                <p class="card-text">
+                    <select v-bind:id="'rate-'+value.url">
+                        <option value=""></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <button v-on:click="setRating"  type="button" class="btn btn-info btn-sm">Voter</button>
+                </p>
                 <a href="#" class="btn btn-primary">Lecture</a>
             </div>
         </div>
@@ -15,14 +26,14 @@
 <script>
     
 import axios from 'axios';
+import 'jquery-bar-rating/dist/jquery.barrating.min.js';
 export default {
         props: ['value', 'index'],
         data() {
             return {
-                // videoID: this.$route.params.id,
                 videoID: this.value.url,
                 videoThumbnails: '',
-                videoURL: 'https://www.youtube.com/watch?v=' + this.$route.params.id,
+                videoURL: 'https://www.youtube.com/watch?v=' + this.value.url,
                 videoNbVue: 0,
                 videoTitle: 'test ',
                 videoChannelTitle: '',
@@ -42,10 +53,18 @@ export default {
                 }).catch(function (error) {
                     console.log(error);
                 });
+            },
+            setRating: function () {
+                console.log($('#rate-' + this.value.url).barrating());
             }
         },
-        created() { // or mounted
+        mounted() {
             this.loadData();
+            $('#rate-' + this.value.url).barrating({
+                theme: 'fontawesome-stars',
+                initialRating: null,
+                allowEmpty: null
+            });
         }
 };
 </script>

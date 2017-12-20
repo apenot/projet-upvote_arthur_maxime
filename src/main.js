@@ -5,6 +5,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'jquery-bar-rating/themes/fontawesome-stars.less';
 import firebase from 'firebase';
 Vue.config.productionTip = false;
 
