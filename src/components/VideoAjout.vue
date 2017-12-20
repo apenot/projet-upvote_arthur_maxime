@@ -14,6 +14,7 @@
                             {{ categories[i].nom }}
                             </option>
                         </select>
+                        <span>Sélectionné : {{ videoCategorie }}</span>
                 </div>
                 <button v-on:click="ajoutVideo()" class="btn btn-primary">Enregistrer</button>
             </form>
@@ -32,9 +33,6 @@ export default {
     },
     firebase() {
         return {
-            videos: {
-                source: firebase.database().ref('/videos')
-            },
             categories: {
                 source: firebase.database().ref('/categories/')
             }
@@ -45,8 +43,7 @@ export default {
             return link.substr(32);
         },
         ajoutVideo() {
-            this.$firebaseRefs.videos.push({url: this.urlShortener(this.videoURL)});
-            this.$firebaseRefs.categories.nom.push({url: this.videoUrl});
+            firebase.database().ref('/categories/' + this.videoCategorie['.key'] + '/videos').push({url: this.urlShortener(this.videoURL)});
             this.videoURL = '';
             this.videoCategorie = '';
         }
