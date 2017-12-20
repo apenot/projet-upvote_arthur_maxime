@@ -20,6 +20,7 @@
 
 <script>
 import firebase from '../firebase';
+import swal from 'sweetalert2/dist/sweetalert2.js';
 export default {
     data() {
         return {
@@ -39,6 +40,11 @@ export default {
             this.$firebaseRefs.categories.push({slug: this.categorieSlug, nom: this.categorieNom});
             this.categorieSlug = '';
             this.categorieNom = '';
+            swal(
+                'Catégorie enregistré!',
+                'La catégorie a été enregistré avec succès!',
+                'success'
+            );
         }
     }
 };
