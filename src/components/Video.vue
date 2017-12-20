@@ -1,10 +1,11 @@
 <template>
-    <div class="col-sm-4 col-sm-md-3 col-lg-4">
+    <div class="col-sm-4 col-md-3 col-lg-4">
         <div class="card" style="width: 20rem;">
             <img class="card-img-top" v-bind:src="videoThumbnails" alt="minuiature">
             <div class="card-body">
                 <h4 class="card-title">{{videoTitle}}</h4>
-                <p class="card-text">{{videoNbVue}} vues / id: {{videoID}}</p>
+                <p class="card-text">{{videoNbVue}} vues</p>
+                <p class="card-text">{{videoChannelTitle}}</p>
                 <a href="#" class="btn btn-primary">Lecture</a>
             </div>
         </div>
@@ -24,6 +25,7 @@ export default {
                 videoURL: 'https://www.youtube.com/watch?v=' + this.$route.params.id,
                 videoNbVue: 0,
                 videoTitle: 'test ',
+                videoChannelTitle: '',
                 videoDescription: '',
                 dataLoaded: false
             };
