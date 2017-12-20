@@ -14,7 +14,6 @@
                             {{ categories[i].nom }}
                             </option>
                         </select>
-                        <span>Sélectionné : {{ videoCategorie }}</span>
                 </div>
                 <button v-on:click="ajoutVideo()" class="btn btn-primary">Enregistrer</button>
             </form>
