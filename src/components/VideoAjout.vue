@@ -1,15 +1,15 @@
 <template>
-   <div class="row">    
+   <div class="row center-row">    
         <div class="col-sm-12 col-md-8 col-lg-6 col-lx-4 mx-auto">
             <h2>Ajouter une video</h2>
             <form>
                 <div class="form-group">
-                    <label for="urlVid">URL de votre video</label>
-                    <input id="urlVId" class="form-control" v-model="videoURL" required>
+                    <label for="urlVid">URL de votre video :</label>
+                    <input id="urlVid" class="form-control" v-model="videoURL" required>
                 </div>
                 <div class="form-group">
-                    <label for="urlVid">Catégorie</label>
-                        <select v-model="selected">
+                    <label for="catVid">Catégorie :</label>
+                        <select id="catVid" class="form-control" v-model="videoCategorie" required>
                             <option v-bind:value="v" v-bind:index="i" v-bind:key="i" v-for="(v, i) in categories">
                             {{ categories[i].nom }}
                             </option>
@@ -26,7 +26,8 @@ import firebase from '../firebase';
 export default {
     data() {
         return {
-            videoURL: ''
+            videoURL: '',
+            videoCategorie: ''
         };
     },
     firebase() {
@@ -35,7 +36,7 @@ export default {
                 source: firebase.database().ref('/videos')
             },
             categories: {
-                source: firebase.database().ref('/categories')
+                source: firebase.database().ref('/categories/')
             }
         };
     },
@@ -45,7 +46,9 @@ export default {
         },
         ajoutVideo() {
             this.$firebaseRefs.videos.push({url: this.urlShortener(this.videoURL)});
+            this.$firebaseRefs.categories.nom.push({url: this.videoUrl});
             this.videoURL = '';
+            this.videoCategorie = '';
         }
     }
 };
