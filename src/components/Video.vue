@@ -5,19 +5,51 @@
             <div class="card-body">
                 <h4 class="card-title">{{videoTitle}}</h4>
                 <p class="card-text">{{videoChannelTitle}} - {{ new Intl.NumberFormat().format(videoNbVue) }} vues</p>
-                <p>Nb vote: </p>
-                <p class="card-text">
-                    <select v-bind:id="'rate-'+value.url">
-                        <option value=""></option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <button v-on:click="setRating"  type="button" class="btn btn-info btn-sm">Voter</button>
-                </p>
-                <a href="#" class="btn btn-primary">Lecture</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" v-bind:data-target="'#Lecture_'+videoID">
+                    Lecture
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" v-bind:id="'Lecture_'+videoID" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg animated zoomInLeft">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{videoTitle}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="video-container">
+                                        <iframe   v-bind:src="'https://www.youtube-nocookie.com/embed/'+videoID" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row vote">
+                                <div class="col-md-6">
+                                    <div class="form-inline">
+                                        <select v-bind:id="'rate-'+value.url">
+                                            <option value=""></option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <button v-on:click="setRating"  type="button" class="btn btn-info btn-sm">Voter</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
     </div>
@@ -71,4 +103,23 @@ export default {
 
 <style>
 
+.vote{
+    margin-top: 20px;
+}
+.video-container {
+position: relative;
+padding-bottom: 56.25%;
+padding-top: 30px;
+height: 0;
+overflow: hidden;
+}
+.video-container iframe,
+.video-container object,
+.video-container embed {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
 </style>
