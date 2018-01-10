@@ -33,7 +33,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.$bindAsArray('videos', firebase.database().ref('categories/' + this.categorie['.key'] + '/videos'));    
+            this.$bindAsArray('videos', firebase.database().ref('categories/' + this.categorie['.key'] + '/videos'));
         }
     },
     components: {
