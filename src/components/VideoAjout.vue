@@ -5,11 +5,12 @@
             <form>
                 <div class="form-group">
                     <label for="urlVid">URL de votre video :</label>
-                    <input id="urlVid" class="form-control" v-model="videoURL" required>
+                    <input id="urlVid" class="form-control" placeholder="URL" v-model="videoURL" required>
                 </div>
                 <div class="form-group">
                     <label for="catVid">Catégorie :</label>
                         <select id="catVid" class="form-control" v-model="videoCategorie" required>
+                            <option value="" disabled selected hidden>Veuillez sélectionner une catégorie</option>
                             <option v-bind:value="v" v-bind:index="i" v-bind:key="i" v-for="(v, i) in categories">
                             {{ categories[i].nom }}
                             </option>
@@ -23,6 +24,8 @@
 
 <script>
 import firebase from '../firebase';
+import swal from 'sweetalert2/dist/sweetalert2.js';
+
 export default {
     data() {
         return {
@@ -45,6 +48,12 @@ export default {
             firebase.database().ref('/categories/' + this.videoCategorie['.key'] + '/videos').push({url: this.urlShortener(this.videoURL)});
             this.videoURL = '';
             this.videoCategorie = '';
+            swal(
+                'Video enregistré!',
+                'La video a été enregistré avec succès!',
+                'success'
+            );
+            this.$router.push('/');
         }
     }
 };

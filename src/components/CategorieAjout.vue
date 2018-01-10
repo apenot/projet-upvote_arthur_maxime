@@ -41,10 +41,11 @@ export default {
             this.categorieSlug = '';
             this.categorieNom = '';
             swal(
-                'Catégorie enregistré!',
+                'Catégorie ajouté!?',
                 'La catégorie a été enregistré avec succès!',
                 'success'
             );
+            this.$router.push('/');
         }
     }
 };
