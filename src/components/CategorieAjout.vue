@@ -42,7 +42,7 @@ export default {
             this.categorieNom = '';
             swal(
                 'Catégorie ajouté!?',
-                'La catégorie a été enregistré avec succès!',
+                'La catégorie a été enregistrée avec succès!',
                 'success'
             );
             this.$router.push('/');

@@ -1,7 +1,7 @@
 <template>
    <div class="row center-row">    
         <div class="col-sm-12 col-md-8 col-lg-6 col-lx-4 mx-auto">
-            <h2>Ajouter une video</h2>
+            <h2>Proposer une video</h2>
             <form>
                 <div class="form-group">
                     <label for="urlVid">URL de votre video :</label>
@@ -49,8 +49,8 @@ export default {
             this.videoURL = '';
             this.videoCategorie = '';
             swal(
-                'Video enregistré!',
-                'La video a été enregistré avec succès!',
+                'Vidéo enregistré!?',
+                'La vidéo a été enregistrée avec succès!',
                 'success'
             );
             this.$router.push('/');
