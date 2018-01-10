@@ -2,15 +2,15 @@
 
 Upvote est un projet WEB codé en HTML/CSS/Javacript avec le framework vue.js. Il est réalisé dans le cadre du module "Projet WEB" de deuxième année de la haute école de gestion
 
-Notre site utilise l'API de youtube afin de rajouter des vidéos. L'idée est de permettre à l'utilisateur de récupérer des vidéos youtube et de les proposer sur une autre plateforme ou il pourra définir des catégories dans lesquelles les classer. Alors que Youtube établi ses propres recommandations, notre plateforme donne accès aux vidéos uniquement choisi par les utilisateurs.
+Notre site utilise l'API de youtube afin de rajouter des vidéos. L'idée est de permettre à l'utilisateur de récupérer des vidéos youtube et de les proposer sur une autre plateforme ou il pourra définir des catégories dans lesquelles les classer. Alors que Youtube établi ses propres recommandations, notre plateforme donne accès aux vidéos uniquement choisies par les utilisateurs.
 
 Un système de notation est aussi à disposition afin de permettre d'évaluer les propositions de vidéos.
 
-Il est à préciser que l'évolution du projet se tournera vers l'instauration d'un système de login afin de donner l'opportunité à l'utilisateur d'avoir sa liste personalisé.
+Il est à préciser que l'évolution du projet se tournera vers l'instauration d'un système de login.
 
 # Problème(s) rencontré(s)
 
-# Solution(s)
+# Solution(s)/retour d'expérience
 
 # Schéma de l'architecture
 
