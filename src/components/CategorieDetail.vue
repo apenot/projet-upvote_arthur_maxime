@@ -2,7 +2,7 @@
   <div>
       <h1>{{categorie.nom}}</h1>
         <div class="row">
-            <my-video  v-bind:value="v" v-bind:index="i" v-bind:key="i" v-for="(v, i) in videos"></my-video>
+            <my-video  v-bind:value="v" v-bind:index="i" v-bind:key="i" v-for="(v, i) in videoInverse"></my-video>
         </div>
   </div>
 </template>
@@ -16,6 +16,9 @@ export default {
         categorie() {
             return this.$root.categories.find(
             c => String(c.slug) === String(this.$route.params.slug));
+        },
+        videoInverse() {
+            return this.videos.reverse();
         }
     },
     data() {
