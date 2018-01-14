@@ -2,7 +2,7 @@
     <div class="row">    
         <div class="col-sm-12 col-md-8 col-lg-6 col-lx-4 mx-auto">
             <h2>Ajouter une categorie</h2>
-            <form>
+            <form action="javascript:void(0);">
                 <div class="form-group">
                     <label for="nomCat">Nom</label>
                     <input id="nomCat" class="form-control" placeholder="Catégorie" v-model="categorieNom" required>
@@ -37,15 +37,30 @@ export default {
     },
     methods: {
         ajoutCategorie() {
-            this.$firebaseRefs.categories.push({slug: this.categorieSlug, nom: this.categorieNom});
-            this.categorieSlug = '';
-            this.categorieNom = '';
-            swal(
-                'Catégorie ajouté!?',
-                'La catégorie a été enregistré avec succès!',
-                'success'
-            );
-            this.$router.push('/');
+            if (this.categorieNom === '' || this.categorieSlug === '') {
+                swal(
+                    'Champs incomplets!',
+                    'Veuillez remplir tous les champs!',
+                    'error'
+                );
+            } else {
+                if (this.categorieSlug.indexOf(' ') !== -1) {
+                    swal(
+                        'Erreur!',
+                        'Erreur le slug contient un espace!',
+                        'error'
+                    );
+                } else {
+                    this.$firebaseRefs.categories.push({slug: this.categorieSlug, nom: this.categorieNom});
+                    swal(
+                        'Catégorie ajoutée!',
+                        'La catégorie a été enregistré avec succès!',
+                        'success'
+                    ).then((result) => {
+                        window.location.replace('./');
+                    });
+                }
+            }
         }
     }
 };
