@@ -2,7 +2,7 @@
    <div class="row center-row">    
         <div class="col-sm-12 col-md-8 col-lg-6 col-lx-4 mx-auto">
             <h2>Ajouter une video</h2>
-            <form>
+            <form action="javascript:void(0);">
                 <div class="form-group">
                     <label for="urlVid">URL de votre video :</label>
                     <input id="urlVid" class="form-control" placeholder="URL" v-model="videoURL" required>
@@ -45,15 +45,23 @@ export default {
             return link.substr(32);
         },
         ajoutVideo() {
-            firebase.database().ref('/categories/' + this.videoCategorie['.key'] + '/videos').push({url: this.urlShortener(this.videoURL)});
-            this.videoURL = '';
-            this.videoCategorie = '';
-            swal(
-                'Video enregistré!',
-                'La video a été enregistré avec succès!',
-                'success'
-            );
-            this.$router.push('/');
+            console.log(this.videoCategorie);
+            if (this.videoURL === '' || this.videoCategorie['.key'] == null) {
+                swal(
+                'Champs incomplets!',
+                'Veuillez remplir tous les champs!',
+                'error'
+                );
+            } else {
+                firebase.database().ref('/categories/' + this.videoCategorie['.key'] + '/videos').push({url: this.urlShortener(this.videoURL)});
+                swal(
+                    'Vidéo enregistrée!',
+                    'La vidéo a été enregistré avec succès!',
+                    'success'
+                ).then((result) => {
+                    window.location.replace('./');
+                });
+            }
         }
     }
 };
