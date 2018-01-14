@@ -112,7 +112,7 @@ export default {
                     onSelect(value, text) {
                         swal(
                             'Vote enregistré!',
-                            'Merci ! Votre vote a été enregistré avec succès! ' + 'vote: ' + value,
+                            'Merci ! Votre vote a été enregistré avec succès! ',
                             'success'
                         );
                         vm.addVote(value);
