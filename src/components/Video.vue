@@ -34,7 +34,7 @@
                             </div>
                             <div class="row vote">
                                 <div class="col-md-6">
-                                    <div class="form-inline">
+                                    <div class="form-inline" v-show="ratingShow">
                                         <select v-bind:id="'rate-'+videoID">
                                             <option value=""></option>
                                             <option value="1">1</option>
@@ -71,6 +71,7 @@ export default {
         props: ['value', 'index', 'categorieKey'],
         data() {
             return {
+                ratingShow: true,
                 videoID: this.value.url,
                 videoThumbnails: '',
                 videoURL: 'https://www.youtube.com/watch?v=' + this.value.url,
@@ -96,6 +97,7 @@ export default {
             addVote: function (valueVote) {
                 this.setNbVote(this.videoNbVote + 1);
                 this.setSommeVote(this.videoSommeVote + Number(valueVote));
+                this.ratingShow = false;
             },
             setSommeVote: function (sommeVote) {
                 firebase.database().ref('/categories/' + this.categorieKey + '/videos/' + this.value['.key'] + '/sommeVote').set(sommeVote);
@@ -107,7 +109,6 @@ export default {
                 const vm = this;
                 $('#rate-' + this.videoID).barrating({
                     theme: 'fontawesome-stars',
-                    initialRating: this.videoMoyenVote,
                     allowEmpty: null,
                     onSelect(value, text) {
                         swal(
