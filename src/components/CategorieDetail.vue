@@ -2,7 +2,7 @@
   <div>
       <h1>{{categorie.nom}}</h1>
         <div class="row">
-            <my-video  v-bind:value="v" v-bind:index="i" v-bind:key="i" v-for="(v, i) in videoInverse"></my-video>
+            <my-video  v-bind:categorieKey="categorie['.key']" v-bind:value="v" v-bind:index="i" v-bind:key="i" v-for="(v, i) in videoInverse"></my-video>
         </div>
   </div>
 </template>
