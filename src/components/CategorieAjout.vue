@@ -37,17 +37,6 @@ export default {
     },
     methods: {
         ajoutCategorie() {
-<<<<<<< HEAD
-            this.$firebaseRefs.categories.push({slug: this.categorieSlug, nom: this.categorieNom});
-            this.categorieSlug = '';
-            this.categorieNom = '';
-            swal(
-                'Catégorie ajouté!?',
-                'La catégorie a été enregistrée avec succès!',
-                'success'
-            );
-            this.$router.push('/');
-=======
             if (this.categorieNom === '' || this.categorieSlug === '') {
                 swal(
                     'Champs incomplets!',
@@ -72,7 +61,6 @@ export default {
                     });
                 }
             }
->>>>>>> 763d3f512430a534da2968a628b3ee5db9358ced
         }
     }
 };
