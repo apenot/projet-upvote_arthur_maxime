@@ -1,8 +1,13 @@
 <template>
    <div class="row center-row">    
         <div class="col-sm-12 col-md-8 col-lg-6 col-lx-4 mx-auto">
+<<<<<<< HEAD
             <h2>Proposer une video</h2>
             <form>
+=======
+            <h2>Ajouter une video</h2>
+            <form action="javascript:void(0);">
+>>>>>>> 763d3f512430a534da2968a628b3ee5db9358ced
                 <div class="form-group">
                     <label for="urlVid">URL de votre video :</label>
                     <input id="urlVid" class="form-control" placeholder="URL" v-model="videoURL" required>
@@ -45,6 +50,7 @@ export default {
             return link.substr(32);
         },
         ajoutVideo() {
+<<<<<<< HEAD
             firebase.database().ref('/categories/' + this.videoCategorie['.key'] + '/videos').push({url: this.urlShortener(this.videoURL)});
             this.videoURL = '';
             this.videoCategorie = '';
@@ -54,6 +60,25 @@ export default {
                 'success'
             );
             this.$router.push('/');
+=======
+            console.log(this.videoCategorie);
+            if (this.videoURL === '' || this.videoCategorie['.key'] == null) {
+                swal(
+                'Champs incomplets!',
+                'Veuillez remplir tous les champs!',
+                'error'
+                );
+            } else {
+                firebase.database().ref('/categories/' + this.videoCategorie['.key'] + '/videos').push({url: this.urlShortener(this.videoURL)});
+                swal(
+                    'Vidéo enregistrée!',
+                    'La vidéo a été enregistré avec succès!',
+                    'success'
+                ).then((result) => {
+                    window.location.replace('./');
+                });
+            }
+>>>>>>> 763d3f512430a534da2968a628b3ee5db9358ced
         }
     }
 };

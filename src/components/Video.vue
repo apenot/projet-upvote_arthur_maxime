@@ -1,6 +1,6 @@
 <template>
-    <!-- <div class="col-sm-6 col-md-6 col-lg-4"> -->
-        <div class="card card-video" data-toggle="modal" v-bind:data-target="'#Lecture_'+videoID">
+    <div class="col-sm-6 col-md-6 col-lg-4 card-video">
+        <div class="card h-100 cursor-pointer" data-toggle="modal" v-bind:data-target="'#Lecture_'+videoID">
             <img class="card-img-top" v-bind:src="videoThumbnails" alt="minuiature">
             <div class="card-body">
                 <h4 class="card-title">{{videoTitle}}</h4>
@@ -11,13 +11,15 @@
                 <div v-else>
                     <i class="fa fa-star fa-lg" aria-hidden="true"></i> {{videoMoyenVote}} / 5 
                 </div>
-                <!-- Modal -->
-                <div class="modal fade" v-bind:id="'Lecture_'+videoID" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg animated zoomInLeft">
-                    <div class="modal-content">
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" v-bind:id="'Lecture_'+videoID" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">{{videoTitle}}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close cursor-pointer" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -32,7 +34,7 @@
                             </div>
                             <div class="row vote">
                                 <div class="col-md-6">
-                                    <div class="form-inline">
+                                    <div class="form-inline" v-show="ratingShow">
                                         <select v-bind:id="'rate-'+videoID">
                                             <option value=""></option>
                                             <option value="1">1</option>
@@ -42,21 +44,21 @@
                                             <option value="5">5</option>
                                         </select>
                                     </div>
-                                    <span>Moyen video: {{videoMoyenVote}} / 5 <i class="fa fa-star" aria-hidden="true"></i> </span>
-                                    <span>Nombre de vote {{videoNbVote}}</span>
+                                    <div class="info-vote">
+                                        <span>Moyen video: {{videoMoyenVote}} / 5 <i class="fa fa-star" aria-hidden="true"></i> </span>
+                                        <span>Nombre de vote: {{videoNbVote}}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-secondary cursor-pointer" data-dismiss="modal">Fermer</button>
                     </div>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>
-    <!-- </div> -->
+    </div>
 </template>
 
 <script>
@@ -69,6 +71,7 @@ export default {
         props: ['value', 'index', 'categorieKey'],
         data() {
             return {
+                ratingShow: true,
                 videoID: this.value.url,
                 videoThumbnails: '',
                 videoURL: 'https://www.youtube.com/watch?v=' + this.value.url,
@@ -94,6 +97,7 @@ export default {
             addVote: function (valueVote) {
                 this.setNbVote(this.videoNbVote + 1);
                 this.setSommeVote(this.videoSommeVote + Number(valueVote));
+                this.ratingShow = false;
             },
             setSommeVote: function (sommeVote) {
                 firebase.database().ref('/categories/' + this.categorieKey + '/videos/' + this.value['.key'] + '/sommeVote').set(sommeVote);
@@ -105,12 +109,11 @@ export default {
                 const vm = this;
                 $('#rate-' + this.videoID).barrating({
                     theme: 'fontawesome-stars',
-                    initialRating: this.videoMoyenVote,
                     allowEmpty: null,
                     onSelect(value, text) {
                         swal(
                             'Vote enregistré!',
-                            'Merci ! Votre vote a été enregistré avec succès! ' + 'vote: ' + value,
+                            'Merci ! Votre vote a été enregistré avec succès! ',
                             'success'
                         );
                         vm.addVote(value);
@@ -150,8 +153,17 @@ export default {
 </script>
 
 <style>
+.cursor-pointer{
+cursor: pointer;
+}
+.info-vote > span{
+    display: block;
+}
+.modal{
+cursor: default;
+}
 .card-video{
-width: 20rem;
+margin-bottom: 3%;
 }
 
 .fa-star{
