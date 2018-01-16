@@ -1,10 +1,10 @@
 <template>
    <div class="row center-row">    
         <div class="col-sm-12 col-md-8 col-lg-6 col-lx-4 mx-auto">
-            <h2>Proposer une video</h2>
+            <h2>Proposer une vidéo</h2>
             <form action="javascript:void(0);">
                 <div class="form-group">
-                    <label for="urlVid">URL de votre video</label>
+                    <label for="urlVid">URL de votre vidéo</label>
                     <input id="urlVid" class="form-control" placeholder="URL" v-model="videoURL" required>
                 </div>
                 <div class="form-group">

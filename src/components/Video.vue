@@ -45,7 +45,7 @@
                                         </select>
                                     </div>
                                     <div class="info-vote">
-                                        <span>Moyenne video: {{videoMoyenVote}} / 5 <i class="fa fa-star" aria-hidden="true"></i> </span>
+                                        <span>Moyenne vidéo: {{videoMoyenVote}} / 5 <i class="fa fa-star" aria-hidden="true"></i> </span>
                                         <span>Nombre de vote(s): {{videoNbVote}}</span>
                                     </div>
                                 </div>
