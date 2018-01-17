@@ -38,12 +38,8 @@ De plus, la page d'acceuil risque de devenir chaotique lors des nombreuses visit
 
 * Firebase
 
-* Jquery
-
-* Less
-
-* Popper
+* jQuery Bar Rating
 
 * SweetAlert2
 
-* Vue
+* VueFire
