@@ -45,7 +45,6 @@ export default {
             return link.substr(32);
         },
         ajoutVideo() {
-            console.log(this.videoCategorie);
             if (this.videoURL === '' || this.videoCategorie['.key'] == null) {
                 swal(
                 'Champs incomplets!',

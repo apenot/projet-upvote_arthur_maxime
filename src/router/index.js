@@ -3,7 +3,6 @@ import Router from 'vue-router';
 import Home from '@/components/Home';
 import CategorieDetail from '@/components/CategorieDetail';
 import CategorieAjout from '@/components/CategorieAjout';
-import VideoDetail from '@/components/VideoDetail';
 import VideoAjout from '@/components/VideoAjout';
 Vue.use(Router);
 
@@ -23,11 +22,6 @@ export default new Router({
             path: '/ajoutCat/',
             name: 'CategorieAjout',
             component: CategorieAjout
-        },
-        {
-            path: '/video/:id',
-            name: 'VideoDetail',
-            component: VideoDetail
         },
         {
             path: '/ajoutVid/',
