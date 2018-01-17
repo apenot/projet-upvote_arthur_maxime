@@ -6,8 +6,6 @@ Notre site utilise l'API de youtube afin de rajouter des vidéos. L'idée est de
 
 Un système de notation est aussi à disposition afin de permettre d'évaluer les propositions de vidéos.
 
-Il est à préciser que l'évolution du projet se tournera vers l'instauration d'un système de login.
-
 # Problème(s) rencontré(s)
 
 La prise en main de vue.js n'est pas forcéement évidente au début, la lecture de la documentation et de différents exemples sur internet nous a grandement aidé à appréhender ce framework.
@@ -22,22 +20,30 @@ Ce projet nous a permis d'avoir une bonne vue d'ensemble du fonctionnement d'un 
 
 Une des plus grandes lecons apprises lors de ce projet est que la gestion du temps et l'anticipation est primordiale. Dans nos futures projets, nous prendront donc plus de temps pour modéliser/planifier notre application afin d'être bien plus efficaces sur la durée.
 
+Durant la présentation de notre projet, nous avons pu avoir une meilleure vision de la direction dans laquelle il allait se tourner. 
+
+Effectivement, l'ajout de catégorie devrait être mieux gérer et être inclut comme "Proposition" lorsque l'utilisateur ne trouve pas de catégorie qui lui convienne lors de l'ajout de vidéo(s).
+
+De plus, la page d'acceuil risque de devenir chaotique lors des nombreuses visites des utilisateurs. L'évolution du projet pourrait donc se tourner vers l'instauration d'un système de login avec par exemple des listes personalisées.
+
 # Schéma de l'architecture
 
-## Build Setup
+![Schéma](/static/img/Schema_projet_UpVote.jpeg)
 
-``` bash
-# install dependencies
-npm install
+# Dépendances
 
-# serve with hot reload at localhost:8080
-npm run dev
+* Bootstrap
 
-# build for production with minification
-npm run build
+* Axios
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+* Firebase
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+* Jquery
+
+* Less
+
+* Popper
+
+* SweetAlert2
+
+* Vue
